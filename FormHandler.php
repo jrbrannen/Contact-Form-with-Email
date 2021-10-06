@@ -4,11 +4,12 @@
     include "email_response.php";   // php file to send an email response to the form submittal email address
 
     function submittalDate(){               // gets the submittal date
+        date_default_timezone_set("America/Chicago");   // sets the date to central US time since server is in EU
         $date = date("m/d/Y");              // assign formatted date in $date variable
         return $date;                       // return $date varible
     }// end submittalDate()
 
-    function formatResponse($inReason){ // formats an appropiate response based of off the name:value input
+    function formatResponse($inReason){ // formats an appropiate response based of off the value input for "reason" name
         
         if($inReason == "resume"){
             $response = "my resume";
@@ -70,9 +71,14 @@
             </p>
 
             <p>
-                Thank you for your interest and for contacting me.  You should recieve a confirmation email at:</br>
-                <?php echo $_POST["email_address"]; ?></br>
-                Your request indicates your reason for contacting me is for <?php echo formatResponse($_POST["reason"]); ?>, with the following comments: </br>
+                Thank you for your interest and for contacting me.  You should recieve a confirmation email at:
+                <span class="font-italic">
+                    <?php echo $_POST["email_address"]; ?>
+                </span></br>
+                Your request indicates your reason for contacting me is for <?php echo formatResponse($_POST["reason"]); ?>, with the following comments: 
+            </p>
+
+            <p>
                 <strong><?php echo $_POST["comments"]; ?></strong>  
                 
             </p>
@@ -87,11 +93,11 @@
         <footer class="text-center m-4">
 
             <p>
-                <a target="_blank"href="https://github.com/jrbrannen/Demonstrate-Input-Form-PHP.git">GitHub Repo Link</a>
+                <a target="_blank"href="https://github.com/jrbrannen/Contact-Form-with-Email.git">GitHub Repo Link</a>
             </p>
 
             <p>
-                <a href="../wdv341.php">PHP Homework Page</a>
+                <a href="../../wdv341.php">PHP Homework Page</a>
             </p>
 
         </footer>

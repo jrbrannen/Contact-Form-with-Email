@@ -1,15 +1,15 @@
 <?php  
 
-    $to = $_POST["email_address"];
-    $subject = "Your request was recieved";
+    $to = $_POST["email_address"];  // uses email address from form input
+    $subject = "Your request was recieved"; // subject line
 
  
-
+    // message is in html format and styled to match the webpage and form server response
     $message = "
     <html>
         <head>
             <style>
-                @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+                
             </style>
         </head>
 
@@ -21,11 +21,10 @@
                 <p>" . submittalDate() . "</p>
                 <p>
                     Dear " . $_POST["first_name"] . ", 
-                </p>    
+                </p>
                         
                 <p>
-                    Thank you for your interest.  You should recieve a confirmation email at: <br>" .
-                    $_POST["email_address"] . "<br>
+                    Thank you for your interest.  You are recieving this email as a conformation of your request for me to contact you.
                     Your request indicates your reason for contacting me is for " . formatResponse($_POST["reason"]) . ", with the following comments: <br>
                     <strong>" . $_POST["comments"] . "</strong> 
                     
@@ -40,7 +39,6 @@
                     Jeremy Brannen
                 </p>
 
-            
             </div>
 
         </body>
